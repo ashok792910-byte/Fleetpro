@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FleetPro - Fleet Management</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="topbar">
+        <div>
+            <h1>FleetPro</h1>
+            <p>Simple Fleet Management System</p>
+        </div>
+        <div id="userArea" class="user-area"></div>
+    </header>
+
+    <main>
+        <!-- Login and registration -->
+        <section id="authSection" class="auth-card">
+            <h2>Welcome to FleetPro</h2>
+            <div class="auth-grid">
+                <form id="loginForm">
+                    <h3>Login</h3>
+                    <input id="loginEmail" type="email" placeholder="Email address" required>
+                    <input id="loginPassword" type="password" placeholder="Password" required>
+                    <button type="submit">Login</button>
+                </form>
+
+                <form id="registerForm">
+                    <h3>Create account</h3>
+                    <input id="registerName" placeholder="Full name" required>
+                    <input id="registerEmail" type="email" placeholder="Email address" required>
+                    <input id="registerPassword" type="password" placeholder="Password (minimum 6 characters)" minlength="6" required>
+                    <select id="registerRole" required>
+                        <option value="Manager">Manager</option>
+                        <option value="Driver">Driver</option>
+                    </select>
+                    <button type="submit">Register</button>
+                </form>
+            </div>
+           
+        </section>
+
+        <!-- Main application -->
+        <div id="appSection" hidden>
+            <nav>
+                <a href="#dashboard">Dashboard</a>
+                <a href="#vehicles">Vehicles</a>
+                <a href="#drivers">Drivers</a>
+                <a href="#bookings">Bookings</a>
+                <a href="#reports">Reports</a>
+            </nav>
+
+            <section id="dashboard">
+                <h2>Dashboard</h2>
+                <div class="stats">
+                    <article class="stat"><span id="vehicleCount">0</span><p>Vehicles</p></article>
+                    <article class="stat"><span id="driverCount">0</span><p>Drivers</p></article>
+                    <article class="stat"><span id="bookingCount">0</span><p>Total Bookings</p></article>
+                    <article class="stat"><span id="pendingCount">0</span><p>Pending Bookings</p></article>
+                </div>
+            </section>
+
+            <section id="vehicles">
+                <h2>Vehicle Records</h2>
+                <form id="vehicleForm" class="entry-form">
+                    <input id="vehicleName" placeholder="Vehicle name" required>
+                    <input id="vehicleNumber" placeholder="Registration number" required>
+                    <select id="vehicleStatus">
+                        <option>Available</option>
+                        <option>In Use</option>
+                        <option>Maintenance</option>
+                    </select>
+                    <button type="submit">Add Vehicle</button>
+                </form>
+                <input id="vehicleSearch" class="search" placeholder="Search vehicles...">
+                <ul id="vehicleList" class="record-list"></ul>
+            </section>
+
+            <section id="drivers">
+                <h2>Driver Records</h2>
+                <form id="driverForm" class="entry-form">
+                    <input id="driverName" placeholder="Driver name" required>
+                    <input id="driverPhone" type="tel" pattern="[0-9+() -]{7,15}" placeholder="Phone number" required>
+                    <select id="driverStatus">
+                        <option>Available</option>
+                        <option>On Duty</option>
+                        <option>Off Duty</option>
+                    </select>
+                    <button type="submit">Add Driver</button>
+                </form>
+                <input id="driverSearch" class="search" placeholder="Search drivers...">
+                <ul id="driverList" class="record-list"></ul>
+            </section>
+
+            <section id="bookings">
+                <h2>Booking Management</h2>
+                <form id="bookingForm" class="entry-form">
+                    <input id="pickup" placeholder="Pickup location" required>
+                    <input id="destination" placeholder="Destination" required>
+                    <input id="travelDate" type="date" required>
+                    <select id="bookingStatus">
+                        <option>Pending</option>
+                        <option>Approved</option>
+                        <option>Completed</option>
+                        <option>Cancelled</option>
+                    </select>
+                    <button type="submit">Add Booking</button>
+                </form>
+                <div class="filters">
+                    <input id="bookingSearch" class="search" placeholder="Search bookings...">
+                    <select id="bookingFilter">
+                        <option value="All">All statuses</option>
+                        <option>Pending</option>
+                        <option>Approved</option>
+                        <option>Completed</option>
+                        <option>Cancelled</option>
+                    </select>
+                </div>
+                <ul id="bookingList" class="record-list"></ul>
+            </section>
+
+            <section id="reports">
+                <h2>Basic Reports</h2>
+                <p id="reportText">Your fleet summary will appear here.</p>
+                <button id="reportButton" type="button">Refresh Report</button>
+            </section>
+        </div>
+    </main>
+
+    <div id="message" class="message" role="status"></div>
+    <footer><p>FleetPro - Simple Fleet Management System</p></footer>
+    <script src="script.js"></script>
+</body>
+</html>
